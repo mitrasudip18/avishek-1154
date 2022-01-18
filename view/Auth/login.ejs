@@ -1,0 +1,92 @@
+<%- include('../Includes/Header.ejs') %>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <title>
+        <%= title_page %></title>
+    <link rel="stylesheet" href="/stylelog.css">
+</head>
+
+<body>
+    <%- include('../Includes/Navigation.ejs') %>
+
+    <div class="container footlog ">
+        <div class="d-flex justify-content-center h-30 logi">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Sign In</h3>
+                    <div class="d-flex justify-content-end social_icon">
+                        <span><i class="fab fa-facebook-square"></i></span>
+                        <span><i class="fab fa-google-plus-square"></i></span>
+                        <span><i class="fab fa-twitter-square"></i></span>
+                    </div>
+                </div>
+                <div class="cbdy card-body">
+                    <form  method="POST" action="/login">
+                        <input type="hidden" value="<%=csrf%>" name="_csrf">
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input type="email" class="form-control" name="email" placeholder="username">
+                            
+                        </div>
+                        <%if(erorMsg){%>
+                            <div class="form errorMessage"><%=erorMsg%></div>
+                        <%}%>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input type="password" name="pwd" class="form-control" placeholder="password">
+                        </div>
+                        <%if(erorMsg){%>
+                            <div class="form errorMessage"><%=erorMsg%></div>
+                        <%}%>
+                        <div class="row align-items-center remember">
+                            <input type="checkbox" name="checked">Remember Me
+                        </div>
+                        <%if(error.length>0) {%>
+                            <%for(let err of error){%>
+                            <div><h6 style="color: red;"><%=err.msg%></h6></div>
+                        <%}%>
+                    <%}%>
+                        <div class="form-group">
+                            <input type="submit" value="Login" class="btn float-right login_btn">
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-center links">
+                        Don't have an account?<a href="/registration">Sign Up</a>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <a href="/forgotpassword" class="forgot ">Forgot your password?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <!-- <div>
+        <form method="POST" action="/login" class="frm2">
+            <h2>LogIn Form</h2>
+            <label class="l2">Email:  </label><br>
+            <input type="text" name="email" placeholder="Enter email id" class="in2"><br>
+            <label class="l2">Password:     </label><br>
+            <input type="password" name="pwd" placeholder="Enter password" class="in2"><br>
+           
+            <input type="submit" value="Submit" class="btn" id="butn">
+        </form>
+    </div> -->
+<%- include('../Includes/Footer.ejs') %>
+
+
+
+
+

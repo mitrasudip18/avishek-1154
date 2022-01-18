@@ -1,0 +1,77 @@
+<%- include('../Includes/Header.ejs') %>
+    <title>
+        <%= title_page %></title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <%- include('../Includes/Navigation.ejs') %>
+    <div class="contact">
+        <div class="first">
+            <div class="info">
+                
+                <img src="/Images/registration.jpg" height="550px" width="400px">
+            
+               </div>
+        </div>
+        
+        <div class="second">
+            <h2 class="h3">ADD-PRODUCT</h2>
+            <form method="POST" action="/postValue" enctype="multipart/form-data">
+                <input type="hidden" value="<%=csrf%>" name="_csrf">
+                <div class="form">
+                    <label>PRODUCT TITLE</label>
+                    <input class="name" type="text" name="ptitle" placeholder="Enter Product title">
+                   
+                </div>
+                <div class="form">
+                    <label>PRODUCT PRICE</label>
+                    <input class="name" type="text" name="pprice" placeholder="Enter Product Price">
+                   
+                </div>
+                <div class="form">
+                        <label>PRODUCT DESCRIPTION</label>
+                        <input id="email" type="text" name="pdescription" placeholder="Enter Prosuct Desc..">
+                </div>
+                <div class="form">
+                    <label>PRODUCT IMAGE</label>
+                    <input id="phone" type="file" name="pimage" placeholder="Enter Product Image">
+                </div>
+                <%if(error.length>0) {%>
+                    <%for(let err of error){%>
+                    <div><h6 style="color: red;"><%=err.msg%></h6></div>
+                <%}%>
+            <%}%>
+                
+                <input type="submit" value="ADD"  class="btn">
+            </form>
+        </div>
+    </div> 
+
+
+
+
+
+
+
+
+    <!-- <div>
+        <form method="POST" action="/postValue" enctype="multipart/form-data" class="frm">
+            <label>Product Title: </label><br>
+            <input type="text" name="ptitle" placeholder="Enter Product Title" class="in"><br>
+             <label>Product Price:  </label><br>
+            <input type="text" name="pprice" placeholder="Enter price" class="in"><br>
+            <label>Product description:  </label><br>
+            <input type="text" name="pdescription" placeholder="Enter product description" class="in"><br>
+            <label>Product Image:     </label><br>
+            <input type="file" name="pimage" placeholder="Enter Product Name" class="in"><br>
+           
+            <input type="submit" value="Submit" class="btn" id="butn">
+        </form>
+    </div> -->
+<%- include('../Includes/Footer.ejs') %>
+
+
+
+
+

@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title><%=title %></title>
+    </head>
+    <body>
+        <h1>form details</h1>
+        <%if(data.length>0){%>
+            <%for(let val of data){%>
+           <h2>productTitle: <%=val.prodTitle %></h2> 
+            <h2>ProductCost: <%=val.prodPrice %></h2>
+            <h2>productDescription: <%=val.prodDesc %></h2>
+            <h2><h2>productdescription: <%=val.prodImage %></h2></h2>
+            <hr>
+            <%}%>
+        <%}else{%>
+            <h1>data not found</h1>
+        <%}%>
+    </body>
+</html>

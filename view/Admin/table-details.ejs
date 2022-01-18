@@ -1,0 +1,78 @@
+<%- include('../Includes/Header.ejs') %>
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+    <body>
+        <%- include('../Includes/Navigation.ejs') %>
+        <div>
+            <div class="card">
+                <table class="table table-hover shopping-cart-wrap">
+                <thead class="text-muted">
+                <tr>
+                  <th scope="col" width="400">Product</th>
+                  <th scope="col" width="450">Product Description</th>
+                  <th scope="col" width="120">Price</th>
+                  <th scope="col" width="200" class="text-right">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <%if(data.length>0){%>
+                        <%for(let val of data){%>
+                <tr>
+                    <td>
+                <figure class="media">
+                    <div class="img-wrap"><img src="../<%=val.prodImage%>" height="150" width="200" /> <class="img-thumbnail img-sm"></div>
+                    
+                    <figcaption class="media-body">
+                        <h6 class="title text-truncate">Name:<%=val.prodTitle %> </h6>
+                        
+                       
+                        
+                    </figcaption>
+                </figure> 
+                    </td>
+                    <td> 
+                        <p>
+                            <%=val.prodDesc %><br>
+                        </p>
+                    </td>
+                    <td> 
+                        <div class="price-wrap"> 
+                            <var class="price"><%=val.prodPrice %></var> 
+                            <small class="text-muted">(Rs. each)</small>
+                            <form action="/addToCart" method="POST">
+                                <input type="hidden" value="<%=csrf%>" name="_csrf">
+                                <input type="hidden" name="quantity" value="1">
+                                <input type="hidden" name="productId" value="<%=val._id%>">
+                                <input type="Submit" value="ADD TO CART" class="btn btn-outline-danger">
+        
+                            </form> 
+                        </div> <!-- price-wrap .// -->
+                    </td>
+                    <td class="text-right"> 
+                    <a title="" href="/editform/<%=val._id%>" class="btn btn-outline-success" data-toggle="tooltip" data-original-title="Save to Wishlist">Edit <i class="fa fa-heart"></i></a> 
+                    <a href="/deletepro/<%=val._id%>" class="btn btn-outline-danger"> × Remove</a>
+                   
+                </td>
+                </tr>
+                <tr>
+                    <td>
+               
+                </tbody>
+                <%}%>
+                <%}else{%>
+                   <h1>data not found</h1>
+               <%}%>
+                </table>
+                </div> <!-- card.// -->
+                
+    </div>
+
+    <%- include('../Includes/Footer.ejs') %>
+
+
+
+

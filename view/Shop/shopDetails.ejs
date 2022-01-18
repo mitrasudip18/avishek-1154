@@ -1,0 +1,75 @@
+<%- include('../Includes/Header.ejs') %>
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+    <body>
+        <%- include('../Includes/Navigation.ejs') %>
+        <br>
+        
+        <form class="srch"action="/srch" method="post">
+            <input type="hidden" value="<%=csrf%>" name="_csrf">
+            <input type="text" name="search">
+            <button type="submit" value="submit">Search</button>
+          </form>
+          <div class="container">
+          <%if(data.length>0){%>
+            
+            <div class="row">
+            <%for(let val of data){%>
+          <div class="col-md-3">
+            <figure class="card card-product">
+                <div class="img-wrap"> 
+                    <a href="/shopproduct/<%=val._id%>">
+                    <img src="../<%=val.prodImage%>" height="200" width="800" /></a>
+                    </div>
+                <figcaption class="info-wrap">
+                    <h6 class="title text-dots"><a href="/shopproduct/<%=val._id%>" ><%=val.prodTitle%></a></h6>
+                    <div class="action-wrap">
+                        
+                        <form action="/addToCart" method="POST">
+                            <input type="hidden" value="<%=csrf%>" name="_csrf">
+                            <input type="hidden" name="quantity" value="1">
+                            <input type="hidden" name="productId" value="<%=val._id%>">
+                            <input type="Submit" value="ADD TO CART" class="btn btn-outline-danger" >
+                
+                        </form> 
+                        
+                        <div class="price-wrap h5">
+                            <span class="price-new">Rs. <%=val.prodPrice %></span>
+                            
+                        </div> 
+                    </div> 
+                </figcaption>
+            </figure> 
+        </div> 
+        <%}%>
+    </div>
+    <%}else{%>
+        <h1>data not found</h1>
+    <%}%> 
+</div>
+        
+    
+    <%- include('../Includes/Footer.ejs') %>
+
+
+
+
+       
+  
+
+
+ <!-- <h1>form details</h1>
+        <%if(data.length>0){%>
+            <%for(let val of data){%>
+           <h2>ProductId: <%=val.ProductId %></h2> 
+            <h2>ProductName: <%=val.ProductName %></h2>
+            <h2>Productcost: <%=val.Productcost %></h2>
+            <hr>
+            <%}%>
+        <%}else{%>
+            <h1>data not found</h1>
+        <%}%> -->

@@ -1,0 +1,77 @@
+<%- include('../Includes/Header.ejs') %>
+    <title>
+        <%= title %></title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <%- include('../Includes/Navigation.ejs') %>
+
+    <div class="contact">
+        <div class="first">
+            <div class="info">
+                
+                <img src="/Images/editregistration.jpeg" height="550px" width="400px">
+            
+               </div>
+        </div>
+        
+        <div class="second">
+            <h2 class="h3">EDIT-DETAILS</h2>
+            <form method="POST" action="/postNewValue" enctype="multipart/form-data">
+                <input type="hidden" value="<%=csrf%>" name="_csrf">
+                <div class="form">
+                    
+                    <label>PRODUCT TITLE</label>
+                    <input class="name" type="text" name="ptitle" placeholder="<%=data.prodTitle%>">
+                   
+                </div>
+                <div class="form">
+                    <label>PRODUCT PRICE</label>
+                    <input class="name" type="text" name="pprice" placeholder="<%=data.prodPrice%>">
+                   
+                </div>
+                <div class="form">
+                        <label>PRODUCT DESCRIPTION</label>
+                        <input id="email" type="text" name="pdescription" placeholder="<%=data.prodDesc%>">
+                </div>
+                <div class="form">
+                    <label>PRODUCT IMAGE</label>
+                    <input id="phone" type="file" name="pimage" placeholder="../<%=data.prodImage%>">
+                </div>
+                <input type="hidden" name="mdbid"  class="in" value="<%=data._id%>"><br>
+            
+                <input type="submit" value="SUBMIT"  class="btn">
+            </form>
+        </div>
+    </div> 
+
+
+
+
+
+
+
+
+
+
+    <!-- <div>
+        <form method="POST" action="/postNewValue" enctype="multipart/form-data" class="frm">
+            <label>Product Title: </label><br>
+            <input type="text" name="ptitle" placeholder="Enter Product Title" class="in"><br>
+             <label>Product Price:  </label><br>
+            <input type="text" name="pprice" placeholder="Enter price" class="in"><br>
+            <label>Product description:  </label><br>
+            <input type="text" name="pdescription" placeholder="Enter product description" class="in"><br>
+            <label>Product Image:     </label><br>
+            <input type="file" name="pimage" placeholder="Enter Product Name" class="in"><br>
+            <input type="hidden" name="mdbid"  class="in" value="<%=data._id%>"><br>
+            <input type="submit" value="Submit" class="btn" id="butn">
+        </form>
+    </div> -->
+<%- include('../Includes/Footer.ejs') %>
+
+
+
+
+

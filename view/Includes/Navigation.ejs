@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg aq navbar-dark bg-dark">
+    <div class="container-fluid">
+      <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <%if(isAuthenticated){%>
+          <li class="nav-item dropdown drop-style">
+            <a class="nav-link dropdown-toggle nav-link navib" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Admin
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li class="nav-item nav_elemnt">
+                  <a class="nav-link  <%= path ==='/home_form' ? 'active' : ''%>" aria-current="page" href="/home_form">Add_Product</a>
+                </li>
+                <li class="nav-item nav_elemnt">
+                  <a class="nav-link   <%= path ==='/details' ? 'active' : ''%>" href="/details">Details</a>
+              
+                </li>
+            </ul>
+        </li>
+        
+              
+          <a class="nav-link    <%= path ==='/shpdetails' ? 'active' : ''%>"  href="/shpdetails">shop_Details</a>
+          <a class="nav-link    <%= path ==='/logout' ? 'active' : ''%>" href="/logout">Log-Out</a>
+          
+          <%}%>
+        <%if(!isAuthenticated){%>
+          <div class="navbar-nav ">
+            <a class="nav-link    <%= path ==='/home' ? 'active' : ''%>" href="/home">HOME</a>
+            <a class="nav-link    <%= path ==='/about' ? 'active' : ''%>" href="#about">About</a> 
+          <a class="nav-link    <%= path ==='/registration' ? 'active' : ''%>" href="/registration">Register</a>
+          <a class="nav-link    <%= path ==='/log' ? 'active' : ''%>" href="/log">Log-In</a>
+          
+        </div>
+        <%}%>
+
+
+        </div>
+      </div>
+    </div>
+  </nav>

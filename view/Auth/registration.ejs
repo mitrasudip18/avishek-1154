@@ -1,0 +1,73 @@
+<%- include('../Includes/Header.ejs') %>
+    <title>
+        <%= title_page %></title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <%- include('../Includes/Navigation.ejs') %>
+
+    <div class="contact background">
+        <div class="first">
+            <div class="info">
+                
+                <img src="/Images/Product.jpg" height="400px" width="400px">
+            
+               </div>
+        </div>
+        
+        <div class="second">
+            <h2 class="h3">Registration</h2>
+            <form method="POST" action="/postreg">
+                <input type="hidden" value="<%=csrf%>" name="_csrf">
+                <div class="form">
+                    <label>TELL US YOUR NAME</label>
+                    <input class="name" type="text" name="fname" placeholder="First name">
+                    <input class="name" type="text" name="lname" placeholder="Last name">
+                </div>
+                <div class="form">
+                        <label>ENTER YOUR EMAIL</label>
+                        <input id="email" type="email" name="email" placeholder="Eg.example@email.com">
+                </div>
+                <%if(errorMsg){%>
+                    <div class="form errorMessage"><%=errorMsg%></div>
+                <%}%>
+                <div class="form">
+                    <label>ENTER YOUR PASSWORD</label>
+                    <input id="phone" type="password" name="pwd" placeholder="Strong Password">
+                </div>
+                <%if(error.length>0) {%>
+                <%for(let err of error){%>
+                <div><h6 style="color: red;"><%=err.msg%></h6></div>
+            <%}%>
+        <%}%>
+                
+                <input type="submit" value="SIGN UP"  class="btn">
+            </form>
+        </div>
+    </div> 
+
+
+
+
+    <!-- <div>
+        <form method="POST" action="/postreg" class="frm2">
+            <h2>Registration Form</h2>
+            <label class="l2">First Nmae: </label><br>
+            <input type="text" name="fname" placeholder="Enter First Name" class="in2"><br>
+             <label class="l2">Last Name:  </label><br>
+            <input type="text" name="lname" placeholder="Enter Last name" class="in2"><br>
+            <label class="l2">Email:  </label><br>
+            <input type="text" name="email" placeholder="Enter email id" class="in2"><br>
+            <label class="l2">Password:     </label><br>
+            <input type="password" name="pwd" placeholder="Enter password" class="in2"><br>
+           
+            <input type="submit" value="Submit" class="btn" id="butn">
+        </form>
+    </div> -->
+<%- include('../Includes/Footer.ejs') %>
+
+
+
+
+
